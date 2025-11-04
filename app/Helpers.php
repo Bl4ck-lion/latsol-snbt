@@ -9,8 +9,10 @@ function jsonResponse($code, $data) {
 }
 
 function getDeviceHash() {
+    // Prefer X-Forwarded-For to work behind reverse proxies
+    $ip = $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '';
     $userAgent = $_SERVER['HTTP_USER_AGENT'] ?? '';
-    $ipSubnet = substr($_SERVER['REMOTE_ADDR'] ?? '', 0, strrpos($_SERVER['REMOTE_ADDR'] ?? '', '.'));
+    $ipSubnet = substr($ip, 0, strrpos($ip, '.'));
     $uuid = $_COOKIE['device_uuid'] ?? '';
     if (empty($uuid)) {
         $uuid = bin2hex(random_bytes(16));

@@ -25,7 +25,7 @@ class QuestionGenerator
             return false;
         }
 
-        $prompt = $this->buildPrompt($subtest['name']);
+        $prompt = $this->buildPrompt($subtest['name'], $subtest['description']);
         $generatedData = $this->aiClient->generateQuestions($prompt);
 
         if (!$this->validateGeneratedData($generatedData)) {
@@ -62,11 +62,13 @@ class QuestionGenerator
         }
     }
 
-    private function buildPrompt(string $subtestName): string
+    private function buildPrompt(string $subtestName, string $subtestDescription): string
     {
-        return "Anda adalah generator soal SNBT subtest: {$subtestName}.\n" .
-            "Buat 5 soal pilihan ganda, bahasa Indonesia, kesulitan menengah, mengacu kisi-kisi SNBT terbaru untuk subtest tersebut.\n" .
-            "Keluarkan dalam JSON valid dengan format:\n" .
+        return "Anda adalah generator soal SNBT untuk subtest: '{$subtestName}'.\n" .
+            "Fokus utama subtest ini adalah: '{$subtestDescription}'.\n" .
+            "Buat 5 soal pilihan ganda dalam Bahasa Indonesia dengan tingkat kesulitan menengah. Soal harus relevan dengan deskripsi dan kisi-kisi SNBT terbaru.\n" .
+            "Pastikan setiap soal logis, jelas, dan dapat diselesaikan tanpa informasi eksternal.\n\n" .
+            "Format output harus JSON yang valid, seperti contoh berikut:\n" .
             "{\n" .
             "  \"questions\": [\n" .
             "    {\n" .

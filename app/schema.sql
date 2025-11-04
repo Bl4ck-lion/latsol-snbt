@@ -51,6 +51,16 @@ CREATE TABLE subtests (
   is_active TINYINT(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB;
 
+-- SUBTEST DATA
+INSERT INTO subtests (slug, name, description) VALUES
+('penalaran-umum', 'Kemampuan Penalaran Umum', 'Mengukur kemampuan memecahkan masalah baru dan bernalar secara abstrak. Terdiri dari penalaran induktif (sebab-akibat, kesesuaian pernyataan), penalaran deduktif (penalaran analitik, simpulan logis), dan penalaran kuantitatif (operasi aritmatika dasar).'),
+('pengetahuan-umum', 'Pengetahuan dan Pemahaman Umum', 'Mengukur pemahaman dan kemampuan komunikasi dalam konteks budaya Indonesia, terutama keterampilan berbahasa, penggunaan kata, serta keluasan pengetahuan umum. Materi meliputi sinonim, ide pokok, dan hubungan antar paragraf.'),
+('pemahaman-bacaan', 'Kemampuan Memahami Bacaan dan Menulis', 'Mengukur kemampuan memahami wacana tertulis dan menulis cerita. Materi mencakup simpulan, ide pokok, makna kata, ejaan, konjungsi, dan kalimat efektif.'),
+('pengetahuan-kuantitatif', 'Pengetahuan Kuantitatif', 'Mengukur kemampuan menggunakan informasi kuantitatif dan memanipulasi simbol angka. Materi meliputi bilangan, geometri, aljabar, fungsi, statistika, dan peluang.'),
+('literasi-bahasa-indonesia', 'Literasi dalam Bahasa Indonesia', 'Mengukur kemampuan memahami, menggunakan, mengevaluasi, dan merenungkan berbagai jenis teks dalam Bahasa Indonesia. Fokus pada kompetensi kebahasaan dan strategi kognitif untuk menemukan makna tersurat dan tersirat.'),
+('literasi-bahasa-inggris', 'Literasi dalam Bahasa Inggris', 'Mengukur kemampuan memahami, menggunakan, mengevaluasi, dan merenungkan berbagai jenis teks dalam Bahasa Inggris. Fokus pada reading literacy untuk teks umum, sastra, saintek, dan humaniora.'),
+('penalaran-matematika', 'Penalaran Matematika', 'Mengukur kemampuan merumuskan, menggunakan, dan menafsirkan masalah kuantitatif dalam konteks dunia nyata. Materi meliputi fungsi, bilangan, himpunan, pola bilangan, geometri, aljabar, peluang, dan statistika.');
+
 CREATE TABLE daily_sets (
   id BIGINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
   subtest_id SMALLINT UNSIGNED NOT NULL,
