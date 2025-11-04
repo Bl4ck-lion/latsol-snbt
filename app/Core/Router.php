@@ -33,7 +33,11 @@ class Router {
                 $fileExtension = pathinfo($filePath, PATHINFO_EXTENSION);
                 $mimeType = $mimeTypes[$fileExtension] ?? 'application/octet-stream';
 
-                header('Content-Type: ' . $mimeType);
+                if ($fileExtension === 'css') {
+                    header('Content-Type: text/css');
+                } else {
+                    header('Content-Type: ' . $mimeType);
+                }
                 readfile($filePath);
                 return;
             }
