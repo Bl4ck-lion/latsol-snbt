@@ -22,8 +22,6 @@ $router->add('/battle/status', 'BattleController', 'status', 'GET');
 $router->add('/battle/answer', 'BattleController', 'answer', 'POST');
 $router->add('/battle/finish', 'BattleController', 'finish', 'POST');
 
-$router->add('/admin/generate_daily', 'AdminController', 'generateDaily', 'POST');
-
 $router->add('/admin', 'AdminController', 'index', 'GET');
 $router->add('/admin/generate_daily', 'AdminController', 'generateDaily', 'POST');
 $router->add('/admin/rebuild_scoreboard', 'AdminController', 'rebuildScoreboard', 'POST');
