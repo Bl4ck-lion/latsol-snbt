@@ -47,4 +47,14 @@ class Auth {
     $row = $st->fetch();
     return $row ?: null;
   }
+
+  public static function isPremium(?array $user): bool
+  {
+    if (!$user) {
+        return false;
+    }
+    // 'user' is the default, non-premium role.
+    // Any other role is considered premium.
+    return in_array($user['role'], ['sepuh', 'moderator', 'admin']);
+  }
 }

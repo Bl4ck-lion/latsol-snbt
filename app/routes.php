@@ -13,6 +13,7 @@ $router->add('/attempt/start', 'AttemptController', 'start', 'POST');
 $router->add('/attempt/answer', 'AttemptController', 'answer', 'POST');
 $router->add('/attempt/submit', 'AttemptController', 'submit', 'POST');
 $router->add('/attempt/status', 'AttemptController', 'status', 'GET');
+$router->add('/attempt/{id}/result', 'AttemptController', 'showResult', 'GET');
 
 $router->add('/scoreboard', 'ScoreboardController', 'index', 'GET');
 $router->add('/api/scoreboard', 'ApiController', 'scoreboard', 'GET');

@@ -123,4 +123,26 @@ class AttemptController {
         $attempt = (new Attempt())->find($attempt_id);
         return jsonResponse(200, ['status' => $attempt['status']]);
     }
+
+    public function showResult($attemptId) {
+        $user = Auth::user();
+        if (!$user) {
+            header('Location: /login');
+            exit;
+        }
+
+        $attemptModel = new Attempt();
+        $attempt = $attemptModel->find((int)$attemptId);
+
+        // Ensure the user owns this attempt
+        if (!$attempt || $attempt['user_id'] !== $user['id']) {
+            header('HTTP/1.0 404 Not Found');
+            echo 'Attempt not found.';
+            exit;
+        }
+
+        $results = $attemptModel->getAttemptDetails((int)$attemptId);
+
+        require __DIR__ . '/../Views/result.php';
+    }
 }

@@ -78,8 +78,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(data => {
             if (data.score !== undefined) {
                 sessionStorage.removeItem('attemptData');
-                alert(`Quiz Submitted!\n\nScore: ${data.score} / 5\nDuration: ${data.duration_seconds} seconds`);
-                window.location.href = '/dashboard';
+                // Redirect to the new result page
+                window.location.href = `/attempt/${attemptData.attempt_id}/result`;
             } else {
                 alert('Error submitting your attempt. Please try again.');
             }
